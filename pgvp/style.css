@@ -81,7 +81,7 @@ body {
 }
 
 .isActive {
-  filter: sepia(30%) hue-rotate(270deg);
+  filter: hue-rotate(270deg);
 }
 
 .show-menu {
