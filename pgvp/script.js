@@ -1,27 +1,19 @@
 let productsFromJSON = []; // Создаём переменную для хранения данных
 
+  // Запрос товаров с сервера
 fetch('https://gexpc.ru/api/services')
   .then(response => {
     if (!response.ok) throw new Error('Ошибка сети');
     return response.json();
   })
   .then(data => {
-    console.log('Получены данные:', data);
     productsFromJSON = data; // Заполняем переменную данными
         // Здесь можно вызывать функции для работы с данными
-    renderProducts(productsFromJSON);
     renderServices();
   })
   .catch(error => {
     console.error('Произошла ошибка:', error);
   });
-
-    // Функция для работы с полученными данными
-function renderProducts(products) {
-  console.log('Товары для отображения:', products);
-}
-
-console.log(productsFromJSON);
 
 let servicesList = document.querySelector('.services__list');
 let productTemplate = document.getElementById('service-item');
@@ -51,13 +43,13 @@ function renderServices() {
     }
 }
 
-// Переменные с DOM-объектами;
-let cartButton = document.querySelector('.button__cart'); // Кнопка открытия корзины
-let cartMenu = document.querySelector('.show-menu'); // Корзина
-let cartItemList = document.querySelector('.cart-menu-list'); // Список для товаров в корзине
-let cartPrice = document.querySelector('.cart-price'); // Общая стоимость товаров в корзине
-let cartClearButton = document.querySelector('.cart-clear-button'); // Кнопка очистки корзины
-let headerCartPrice = document.querySelector('.header__cart-price');
+  // Переменные с DOM-объектами;
+const cartButton = document.querySelector('.button__cart'); // Кнопка открытия корзины
+const cartMenu = document.querySelector('.show-menu'); // Корзина
+const cartItemList = document.querySelector('.cart-menu-list'); // Список для товаров в корзине
+const cartPrice = document.querySelector('.cart-price'); // Общая стоимость товаров в корзине
+const cartClearButton = document.querySelector('.cart-clear-button'); // Кнопка очистки корзины
+const headerCartPrice = document.querySelector('.header__cart-price'); // Сумма корзины рядом с кнопкой
 
 cartItemList.innerHTML = '';
 
